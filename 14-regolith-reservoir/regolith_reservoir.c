@@ -77,13 +77,13 @@ char *argv[];
 		first.x = START, first.y = 0;
 	} else
 		first.x = -1, first.y = floor;
-	for (i=0; i <= floor; i++, putchar('\n'))
-		for (j=0; j < WIDTH; j++)
-			putchar(cave[i][j]);
+	/* for (i=0; i <= floor; i++, putchar('\n')) */
+	/* 	for (j=0; j < WIDTH; j++) */
+	/* 		putchar(cave[i][j]); */
 	printf("%d\n", falls(&first));
-	for (i=0; i <= floor; i++, putchar('\n'))
-		for (j=0; j < WIDTH; j++)
-			putchar(cave[i][j]);
+	/* for (i=0; i <= floor; i++, putchar('\n')) */
+	/* 	for (j=0; j < WIDTH; j++) */
+	/* 		putchar(cave[i][j]); */
 }
 
 falls(end)

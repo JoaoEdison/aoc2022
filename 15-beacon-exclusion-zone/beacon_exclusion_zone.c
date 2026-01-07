@@ -54,7 +54,8 @@ char *argv[];
 		end = atoi(argv[2]);
 		for (y=0; y <= end; y++)
 			if ((x = ranges(y)))
-				printf("x:%d y:%d => %lld\n", x, y, x * 4000000llu + y);
+                printf("%lld\n", x * 4000000llu + y);
+				/* printf("x:%d y:%d => %lld\n", x, y, x * 4000000llu + y); */
 	}
 }
 
@@ -89,7 +90,7 @@ ranges(y)
 {
 	int (*unify())[2];
 	int (*intervals)[2];
-        int i, j, k;
+    int i, j, k;
 	struct sensor *sens;
 	char one;
 	
@@ -129,16 +130,17 @@ ranges(y)
 	return 0;
 }
 
-cmpinterval(a, b)
+compar_interval(a, b)
 const void *a, *b;
 {
 	return *(int *)a - *(int *)b;
 }
+
 int (*unify())[2]
 {
 	int i;
 
-	qsort(gaps, end_gap, 2 * sizeof(int), cmpinterval);
+	qsort(gaps, end_gap, 2 * sizeof(int), compar_interval);
 	stack.top = 0;
 	stack.arr[0][0] = gaps[0][0];
 	stack.arr[0][1] = gaps[0][1];

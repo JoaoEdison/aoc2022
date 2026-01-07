@@ -57,7 +57,7 @@ char *argv[];
 			visit(i, remaining, remaining * openable.arr[i]->rate);
 			BIT_CLEAR(visited, i);
 		}
-		printf("max_pre: %d\n", max_pre);
+		printf("%d\n", max_pre);
 	} else {
 		comb = start_comb(start_paths.end / 2, start_paths.end);
 		max_sum = 0;
@@ -86,7 +86,7 @@ char *argv[];
 				}
 			MAXI(max_sum, max_it + max_it2)
 		} while ((comb = next_comb(comb)));
-		printf("max_sum: %d\n", max_sum);
+		printf("%d\n", max_sum);
 	}
 }
 

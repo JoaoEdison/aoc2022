@@ -33,15 +33,16 @@ PART 2:
 teste => 301
 input => 3360561285172
 */
-main()
+main(argc, argv)
+char *argv[];
 {
 	struct monkey *find();
 	num_called search_number(), determine_number();
 	void read_input();
 
 	read_input();
-        /*printf("part 1: %lld\n", search_number(find("root")));*/
-	printf("part 2: %lld\n", determine_number(find("humn"), NULL));
+    printf("%lld\n", *argv[1] == '1' ? search_number(find("root")) :
+                                       determine_number(find("humn"), NULL));
 }
 
 void read_input()
@@ -174,24 +175,24 @@ struct monkey *mo, *prev;
 	sear = search_number(other_mo);
 	switch (called_by->uval.math.op) {
 	case '+':
-		printf("%lld - %lld\n", det, sear);
+		/* printf("%lld - %lld\n", det, sear); */
 		return det - sear;
 	case '*':
-		printf("%lld / %lld\n", det, sear);
+		/* printf("%lld / %lld\n", det, sear); */
 		return det / sear;
 	case '-':
 		if (left_side) {
-			printf("%lld + %lld\n", det, sear);
+			/* printf("%lld + %lld\n", det, sear); */
 			return det + sear;
 		}
-		printf("%lld - %lld\n", sear, det);
+		/* printf("%lld - %lld\n", sear, det); */
 		return sear - det;
 	case '/':
 		if (left_side) {
-			printf("%lld * %lld\n", det, sear);
+			/* printf("%lld * %lld\n", det, sear); */
 			return det * sear;
 		}
-		printf("%lld / %lld\n", sear, det);
+		/* printf("%lld / %lld\n", sear, det); */
 		return sear / det;
 	}
 }

@@ -14,7 +14,6 @@ struct {
 	int end;
 } set;
 
-//polir antes da parte 2
 /*
 PART 1:
 25 <= 9 <- t
@@ -86,11 +85,12 @@ void ranges(y)
 	printf("%d\n", total);
 }
 
-cmpinterval(a, b)
+compar_interval(a, b)
 const void *a, *b;
 {
 	return *(int *)a - *(int *)b;
 }
+
 void unify(gaps, end)
 int (**gaps)[2], *end;
 {
@@ -99,7 +99,7 @@ int (**gaps)[2], *end;
 		int (*arr)[2], size, top;
 	} stack;
 
-	qsort(*gaps, *end, 2 * sizeof(int), cmpinterval);
+	qsort(*gaps, *end, 2 * sizeof(int), compar_interval);
 	stack.arr = (int (*)[2]) malloc(2 * sizeof(int));
 	stack.size = 1;
 	stack.top = 0;

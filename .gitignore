@@ -15,3 +15,6 @@ first
 save.c
 shows.c
 saida
+*.sol
+*.ods
+*.png

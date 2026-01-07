@@ -98,7 +98,7 @@ struct monkey *mon;
 		mon->modifier.value = strtoumax(op, &endptr, 10);
 }
 
-#define LEVEL_WO(it, d) it /= d, printf("\tMonkey gets bored with item. Worry level is divided by %ju to %ju.\n", d, it);
+#define LEVEL_WO(it, d) it /= d;/* printf("\tMonkey gets bored with item. Worry level is divided by %ju to %ju.\n", d, it); */
 #define NO_MORE(it, m) it %= m;
 
 void begin(qtt, times, part, manageable)
@@ -110,53 +110,53 @@ uintmax_t manageable;
 	int i, j;
 	
 	for (j=1, i=0; i < times; i++) {
-//		print_mon(i, &j, qtt);
+		/* print_mon(i, &j, qtt); */
 		for (ptrmo = monkeys; ptrmo != monkeys + qtt; ptrmo++) {
-			printf("Monkey %ld:\n", ptrmo-monkeys);
+			/* printf("Monkey %ld:\n", ptrmo-monkeys); */
 			while (remove_list(ptrmo, &item)) {
-				printf("   Monkey inspects an item with a worry level of %ju.\n", item);
+				/* printf("   Monkey inspects an item with a worry level of %ju.\n", item); */
 				ptrmo->total++;
 				mod = ptrmo->modifier.old? item : ptrmo->modifier.value;
-				printf("\tWorry level ");
+				/* printf("\tWorry level "); */
 				if (ptrmo->modifier.operation == '+') {
 					item += mod;
-					printf("increases");
+					/* printf("increases"); */
 				} else {
 					item *= mod;
-					printf("is multiplied");
+					/* printf("is multiplied"); */
 				}
-				printf(" by %ju to %ju.\n", mod, item);
+				/* printf(" by %ju to %ju.\n", mod, item); */
 				if (part == 1)
 					LEVEL_WO(item, manageable)
 				else
 					NO_MORE(item, manageable)
 
-				printf("\tCurrent worry level is ");
+				/* printf("\tCurrent worry level is "); */
 				if (item % ptrmo->test == 0) {
 					insert_list(ptrmo->true_m, &item);
 					j = ptrmo->true_m - monkeys;
 				} else {
 					insert_list(ptrmo->false_m, &item);
 					j = ptrmo->false_m - monkeys;
-					printf("not ");
+					/* printf("not "); */
 				}
-				printf("divisible by %ju.\n", (uintmax_t) ptrmo->test);
-				printf("\tItem with worry level %ju is throw to monkey %d.\n", item, j);
+				/* printf("divisible by %ju.\n", (uintmax_t) ptrmo->test); */
+				/* printf("\tItem with worry level %ju is throw to monkey %d.\n", item, j); */
 			}
 		}
 	}
-//	print_mon(i, &j, qtt);
+	/* print_mon(i, &j, qtt); */
 }
 
 void print_mon(i, j, qtt)
 int *j;
 {
-	int k;
+	/* int k; */
 
 	if (i == *j) {
-		printf("== After round %d ==\n", i);
-		for (k = 0; k < qtt; k++)
-			printf("Monkey %d inspected items %ju times.\n", k, monkeys[k].total);
+		/* printf("== After round %d ==\n", i); */
+		/* for (k = 0; k < qtt; k++) */
+		/* 	printf("Monkey %d inspected items %ju times.\n", k, monkeys[k].total); */
 		*j = *j == 1? 20 : *j == 20? 1000 : *j + 1000;
 	}
 }

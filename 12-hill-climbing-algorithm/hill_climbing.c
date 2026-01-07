@@ -122,10 +122,11 @@ void get_path()
 		begin(&elevations[beg.y * size.x + beg.x]);
 		if (elevations[end.y * size.x + end.x].total < curr) {
 			curr = elevations[end.y * size.x + end.x].total;
-			print_re(&elevations[end.y * size.x + end.x]);
-			print2(&elevations[end.y * size.x + end.x]);
+			/* print_re(&elevations[end.y * size.x + end.x]); */
+			/* print2(&elevations[end.y * size.x + end.x]); */
 		}
 	}
+    printf("%d\n", curr);
 }
 
 void begin(p)

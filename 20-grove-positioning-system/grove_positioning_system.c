@@ -50,12 +50,12 @@ char *argv[];
 	for (i=0; i < file.end; i++)
 		if (file.arr[i] == 0)
 			break;
-	printf("%lld %lld %lld\n", file.arr[(1000 - (file.end - i)) % file.end],
-			file.arr[(2000 - (file.end - i)) % file.end],
-		       	file.arr[(3000 - (file.end - i)) % file.end]);
-	printf("Sum: %lld\n", file.arr[(1000 - (file.end - i)) % file.end] +
-				file.arr[(2000 - (file.end - i)) % file.end] +
-				file.arr[(3000 - (file.end - i)) % file.end]);
+	/* printf("%lld %lld %lld\n", file.arr[(1000 - (file.end - i)) % file.end], */
+	/* 		file.arr[(2000 - (file.end - i)) % file.end], */
+	/* 	       	file.arr[(3000 - (file.end - i)) % file.end]); */
+	printf("%lld\n", file.arr[(1000 - (file.end - i)) % file.end] +
+                     file.arr[(2000 - (file.end - i)) % file.end] +
+                     file.arr[(3000 - (file.end - i)) % file.end]);
 }
 
 #define SHIFT(begin, end) value = file.arr[begin]; \

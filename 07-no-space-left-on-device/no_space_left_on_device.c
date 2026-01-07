@@ -73,7 +73,7 @@ main()
 	end_main:
 	needed = 30000000 - 70000000 + compute_size(&root);
 	print_tree(&root, 0);
-	printf("\nPARTE 1: %ld\nPARTE 2: %ld\n", res, that);
+	printf("%ld\n%ld\n", res, that);
 }
 
 struct direc *cd(name, curr)
@@ -120,13 +120,13 @@ void print_tree(curr, n)
 struct direc *curr;
 {
 	int i;
-	char levels[5000];
+	/* char levels[5000]; */
 
-	for (i=0; i < n; i++)
-		levels[i] = ' ';
-	levels[i] = '\0';
+	/* for (i=0; i < n; i++) */
+	/* 	levels[i] = ' '; */
+	/* levels[i] = '\0'; */
 
-	printf("%s- %s (dir) |%ld|\n", levels, curr->name, curr->total);
+	/* printf("%s- %s (dir) |%ld|\n", levels, curr->name, curr->total); */
 	
 	/*parte 1:*/
 	if (curr->total <= 100000)
@@ -135,12 +135,12 @@ struct direc *curr;
 	if (curr->total >= needed && curr->total < that)
 		that = curr->total;
 
-	for (i=n; i < n+3; i++)
-		levels[i] = ' ';
-	levels[i] = '\0';
+	/* for (i=n; i < n+3; i++) */
+	/* 	levels[i] = ' '; */
+	/* levels[i] = '\0'; */
 
-	for (i=0; i < curr->files.end; i++)
-		printf("%s- %s (file, size=%ld)\n", levels, curr->files.arr[i].name, curr->files.arr[i].size);
+	/* for (i=0; i < curr->files.end; i++) */
+		/* printf("%s- %s (file, size=%ld)\n", levels, curr->files.arr[i].name, curr->files.arr[i].size); */
 
 	for (i=1; i < curr->dirs.end; i++)
 		print_tree(curr->dirs.arr[i], n+3);
